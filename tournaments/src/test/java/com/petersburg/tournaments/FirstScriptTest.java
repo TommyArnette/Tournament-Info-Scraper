@@ -1,26 +1,27 @@
 package com.petersburg.tournaments;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class HelloSelenium {
-    public static void main(String[] args) {
+public class FirstScriptTest {
+    public WebDriver driver;
+
+    @Test
+    public void eightComponents() {
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
 
-        ChromeOptions options = new ChromeOptions();
-        driver = new ChromeDriver(options);
+        driver.get("https://google.com");
 
-        driver.get("https://selenium.dev");
-
-        driver.getTitle(); // => "Google"
+        Assertions.assertEquals("Google", driver.getTitle());
 
         driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
 
@@ -31,7 +32,7 @@ public class HelloSelenium {
         searchButton.click();
 
         searchBox = driver.findElement(By.name("q"));
-        searchBox.getAttribute("Selenium"); // => "Selenium"
+        Assertions.assertEquals("Selenium", searchBox.getAttribute("value"));
 
         driver.quit();
     }
