@@ -46,7 +46,7 @@ public class HelloSelenium {
             List<WebElement> tournamentSearchResults = driver.findElements(By.className("csa-search-result-tournament"));
 
             for (WebElement tournamentSearchResult : tournamentSearchResults) {
-                System.out.println("Got some results");
+                WebElement tournamentSelectBox = driver.findElement(By.name(""));
             }
 
 
